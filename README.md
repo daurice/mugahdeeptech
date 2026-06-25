@@ -109,3 +109,69 @@ If your hosting account does not force HTTPS yet, install an SSL certificate bef
 - Admin-only pages call `require_admin()`.
 - `.htaccess` blocks directory indexes and adds basic browser security headers.
 - Always replace the default admin password before launch.
+## Mugah DeepTech Academy LMS
+
+The LMS adds learner registration, login, dashboard, lessons, quizzes, certificates, and admin LMS screens.
+
+Learner pages:
+- `/academy/`
+- `/academy/courses`
+- `/academy/register`
+- `/academy/login`
+- `/academy/dashboard`
+
+Admin LMS pages:
+- `/admin/lms-dashboard`
+- `/admin/courses`
+- `/admin/lessons`
+- `/admin/quizzes`
+- `/admin/learners`
+- `/admin/certificates`
+
+After importing `database.sql`, run the academy seeder once from the project root if the sample courses are not already present:
+
+```bash
+php scripts/seed_lms.php
+```
+
+On this local XAMPP run, the LMS schema has already been imported and seeded.
+
+## Rebuilt Academy LMS v2
+
+The Academy now uses the required structured LMS tables:
+`admin_users`, `learners`, `lms_categories`, `lms_courses`, `lms_modules`, `lms_lessons`, `lms_enrollments`, `lms_lesson_progress`, `lms_quizzes`, `lms_quiz_questions`, `lms_quiz_attempts`, `lms_certificates`, and `lms_settings`.
+
+Public learner routes:
+- `/academy/index.php`
+- `/academy/courses.php`
+- `/academy/course.php`
+- `/academy/register.php`
+- `/academy/login.php`
+- `/academy/dashboard.php`
+- `/academy/learn.php`
+- `/academy/lesson.php`
+- `/academy/quiz.php`
+- `/academy/certificate.php`
+
+Admin LMS routes are all inside `/admin/`:
+- `/admin/lms-dashboard.php`
+- `/admin/lms-courses.php`
+- `/admin/lms-course-create.php`
+- `/admin/lms-course-edit.php`
+- `/admin/lms-modules.php`
+- `/admin/lms-lessons.php`
+- `/admin/lms-quizzes.php`
+- `/admin/lms-questions.php`
+- `/admin/lms-learners.php`
+- `/admin/lms-enrollments.php`
+- `/admin/lms-progress.php`
+- `/admin/lms-certificates.php`
+- `/admin/lms-settings.php`
+
+Seed the full sample academy content with:
+
+```bash
+php scripts/seed_lms.php
+```
+
+The seed creates 10 courses, 30 modules, 90 lessons, 10 final quizzes, and 100 quiz questions.

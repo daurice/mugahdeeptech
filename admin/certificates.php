@@ -1,0 +1,1 @@
+<?php header('Location: lms-certificates.php'); exit;

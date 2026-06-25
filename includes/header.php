@@ -40,6 +40,7 @@ $meta = $meta ?? page_meta('AI & Data Consulting', 'Mugah DeepTech helps organiz
                 <li class="nav-item"><a class="nav-link <?= is_active('industries.php'); ?>" href="<?= site_url('industries.php'); ?>">Industries</a></li>
                 <li class="nav-item"><a class="nav-link <?= is_active('case-studies.php'); ?>" href="<?= site_url('case-studies.php'); ?>">Case Studies</a></li>
                 <li class="nav-item"><a class="nav-link <?= is_active('insights.php'); ?>" href="<?= site_url('insights.php'); ?>">Insights</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('academy/index.php'); ?>">Academy</a></li>
                 <li class="nav-item ms-lg-2"><a class="btn btn-premium btn-sm" href="<?= site_url('contact.php'); ?>">Book Consultation</a></li>
             </ul>
         </div>

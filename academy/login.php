@@ -1,0 +1,7 @@
+<?php
+require_once __DIR__ . '/../includes/academy-header.php';
+$error='';
+if ($_SERVER['REQUEST_METHOD']==='POST') { if (!verify_csrf($_POST['csrf_token'] ?? null)) { $error='Security check failed.'; } else { $stmt=$pdo->prepare('SELECT * FROM learners WHERE email=:email LIMIT 1'); $stmt->execute([':email'=>trim((string)($_POST['email'] ?? ''))]); $learner=$stmt->fetch(); if ($learner && password_verify((string)($_POST['password'] ?? ''), $learner['password_hash'])) { session_regenerate_id(true); $_SESSION['learner_id']=(int)$learner['id']; $_SESSION['learner_name']=$learner['full_name']; header('Location: dashboard.php'); exit; } $error='Invalid email or password.'; } }
+?>
+<section class="auth-section"><form class="glass-card login-card" method="post"><input type="hidden" name="csrf_token" value="<?= e(csrf_token()); ?>"><p class="eyebrow">Learner Login</p><h1>Welcome Back</h1><?php if($error): ?><div class="alert alert-danger"><?= e($error); ?></div><?php endif; ?><label>Email</label><input class="form-control mb-3" type="email" name="email" required><label>Password</label><input class="form-control mb-4" type="password" name="password" required><button class="btn btn-premium w-100">Login</button><p class="mt-3">New learner? <a href="register.php">Create account</a></p></form></section>
+<?php include __DIR__ . '/../includes/academy-footer.php'; ?>

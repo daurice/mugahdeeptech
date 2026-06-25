@@ -1,0 +1,1 @@
+<?php header('Location: lms-lessons.php'); exit;

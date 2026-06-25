@@ -12,8 +12,13 @@ if (session_status() === PHP_SESSION_NONE) {
 
 function site_url(string $path = ''): string
 {
-    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
-    $base = $base === '/' ? '' : $base;
+    $dir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/'));
+    $dir = trim($dir, '/');
+    $parts = $dir === '' ? [] : explode('/', $dir);
+    if ($parts && in_array(end($parts), ['admin', 'academy'], true)) {
+        array_pop($parts);
+    }
+    $base = $parts ? '/' . implode('/', $parts) : '';
     return $base . '/' . ltrim($path, '/');
 }
 

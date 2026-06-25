@@ -1,0 +1,1 @@
+<?php header('Location: course.php?slug=' . urlencode((string)($_GET['slug'] ?? ''))); exit;

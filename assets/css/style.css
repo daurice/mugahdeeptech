@@ -457,3 +457,39 @@ label { color: #fff; font-weight: 700; margin-bottom: 0.45rem; }
     0%, 100% { opacity: 0.72; transform: scale(0.94) rotate(0deg); }
     50% { opacity: 1; transform: scale(1.08) rotate(6deg); }
 }
+/* Mugah DeepTech Academy */
+.academy-body { background-attachment: fixed; }
+.academy-hero { min-height: 92vh; display:flex; align-items:center; padding:9rem 0 5rem; border-bottom:1px solid var(--border); }
+.academy-hero h1 { font-size: clamp(3rem, 6vw, 6.2rem); line-height:.96; max-width: 980px; }
+.academy-hero p { max-width: 780px; font-size: 1.12rem; }
+.academy-orb-card { min-height: 420px; border:1px solid var(--border); border-radius:.85rem; background:linear-gradient(145deg, rgba(59,130,246,.12), rgba(124,58,237,.09), rgba(16,185,129,.06)); position:relative; overflow:hidden; display:grid; place-items:center; box-shadow:0 30px 90px rgba(0,0,0,.3); }
+.academy-orb-card span { position:absolute; border:1px solid rgba(255,255,255,.14); padding:.8rem 1rem; border-radius:999px; background:rgba(255,255,255,.055); font-weight:800; animation: academyFloat 5s ease-in-out infinite; }
+.academy-orb-card span:nth-child(1){top:18%;left:16%}.academy-orb-card span:nth-child(2){top:30%;right:14%;animation-delay:.5s}.academy-orb-card span:nth-child(3){bottom:24%;left:20%;animation-delay:1s}.academy-orb-card span:nth-child(4){bottom:18%;right:10%;animation-delay:1.5s}.academy-orb-card strong{font-size:2.4rem}
+.academy-page-hero { background: linear-gradient(135deg, rgba(59,130,246,.13), rgba(124,58,237,.09), rgba(5,5,5,.95)); }
+.academy-course-card { overflow:hidden; }
+.course-meta { display:flex; flex-wrap:wrap; gap:.55rem; color:var(--muted); }
+.course-meta span { border:1px solid var(--border); border-radius:999px; padding:.35rem .65rem; background:rgba(255,255,255,.04); font-size:.85rem; }
+.academy-list { color:var(--muted); line-height:1.8; padding-left:1.2rem; }
+.sticky-card { position:sticky; top:6.5rem; }
+.auth-section { min-height:100vh; display:grid; place-items:center; padding:8rem 1rem 4rem; }
+.academy-progress { height:.72rem; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+.academy-progress div { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--purple),var(--green)); animation: progressGlow 2.5s ease-in-out infinite; }
+.lesson-shell { display:grid; grid-template-columns: 340px 1fr; min-height:100vh; background:#050505; }
+.lesson-sidebar { border-right:1px solid var(--border); padding:1.5rem; position:sticky; top:0; height:100vh; overflow:auto; background:rgba(255,255,255,.025); }
+.lesson-sidebar h3 { font-size:1.1rem; }
+.lesson-link { display:flex; gap:.75rem; align-items:center; color:var(--muted); padding:.75rem; border-radius:.55rem; margin-bottom:.35rem; }
+.lesson-link span { width:1.7rem; height:1.7rem; display:grid; place-items:center; border:1px solid var(--border); border-radius:50%; font-size:.8rem; }
+.lesson-link.active,.lesson-link:hover { color:#fff; background:rgba(59,130,246,.14); }
+.lesson-content { padding:5rem; max-width:1050px; }
+.lesson-content h1 { font-size:clamp(2.2rem,4vw,4.5rem); }
+.video-placeholder { min-height:320px; border:1px solid var(--border); border-radius:.85rem; display:grid; place-items:center; color:var(--muted); background:linear-gradient(135deg, rgba(59,130,246,.12), rgba(124,58,237,.08)); margin:2rem 0; font-weight:800; }
+.quiz-question { border-bottom:1px solid var(--border); padding:1.5rem 0; }
+.quiz-option { display:block; border:1px solid var(--border); border-radius:.55rem; padding:.9rem 1rem; margin:.65rem 0; background:rgba(255,255,255,.035); color:var(--muted); cursor:pointer; }
+.quiz-option:hover { border-color:rgba(59,130,246,.5); color:#fff; }
+.certificate-wrap { padding-top:9rem; }
+.certificate-card { background:#f7f7f2; color:#111; border:10px solid #111; outline:2px solid #7C3AED; padding:4rem; text-align:center; max-width:1000px; margin:auto; }
+.certificate-card p,.certificate-card .eyebrow { color:#333; }.certificate-card h1{font-size:3.2rem}.certificate-card h2{font-size:2.8rem;color:#111}.certificate-card h3{color:#3B82F6}.certificate-meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2rem;color:#333}
+@keyframes academyFloat { 50% { transform: translateY(-12px); } }
+@keyframes progressGlow { 50% { filter: brightness(1.25); } }
+@media(max-width:991px){.lesson-shell{grid-template-columns:1fr}.lesson-sidebar{position:relative;height:auto}.lesson-content{padding:2rem}.academy-hero{padding-top:8rem}.academy-orb-card{min-height:300px}}
+@media print { body * { visibility:hidden; } #certificate, #certificate * { visibility:visible; } #certificate { position:absolute; inset:0; margin:0; max-width:none; } .nav-glass,.footer,.btn { display:none!important; } }

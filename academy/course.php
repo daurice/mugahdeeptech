@@ -1,0 +1,12 @@
+<?php
+require_once __DIR__ . '/../includes/academy-header.php';
+$slug = (string)($_GET['slug'] ?? '');
+$course = get_course_by_slug($pdo, $slug);
+if (!$course) { http_response_code(404); exit('Course not found'); }
+$lessons = get_course_lessons($pdo, (int)$course['id']);
+if ($_SERVER['REQUEST_METHOD']==='POST' && learner_logged_in() && verify_csrf($_POST['csrf_token'] ?? null)) { enroll_learner($pdo, learner_id(), (int)$course['id']); header('Location: dashboard.php'); exit; }
+$enrolled = learner_logged_in() ? is_enrolled($pdo, learner_id(), (int)$course['id']) : false;
+?>
+<section class="page-hero academy-page-hero"><div class="container"><p class="eyebrow"><?= e($course['category_name']); ?></p><h1><?= e($course['title']); ?></h1><p><?= e($course['full_description']); ?></p><div class="course-meta mt-3"><span><?= e($course['level']); ?></span><span><?= count($lessons); ?> lessons</span><span><?= e($course['duration']); ?></span></div></div></section>
+<section class="section-pad"><div class="container"><div class="row g-5"><div class="col-lg-8"><div class="glass-card mb-4"><h2>What you will learn</h2><ul class="academy-list"><?php foreach (explode(';', $course['learning_outcomes']) as $outcome): ?><li><?= e(trim($outcome)); ?></li><?php endforeach; ?></ul></div><div class="glass-card"><h2>Course Lessons</h2><?php foreach ($lessons as $i=>$lesson): ?><div class="lesson-row"><span><?= $i+1; ?></span><div><strong><?= e($lesson['title']); ?></strong><small><?= e($lesson['module_title']); ?></small></div></div><?php endforeach; ?></div></div><div class="col-lg-4"><div class="glass-card sticky-card"><h2>Enroll today</h2><p>Study at your pace and earn a Mugah DeepTech Academy certificate after completing lessons and passing the quiz.</p><?php if (!$enrolled): ?><?php if (learner_logged_in()): ?><form method="post"><input type="hidden" name="csrf_token" value="<?= e(csrf_token()); ?>"><button class="btn btn-premium w-100" type="submit">Enroll Now</button></form><?php else: ?><a class="btn btn-premium w-100" href="login.php">Login to Enroll</a><a class="btn btn-outline-light w-100 mt-2" href="register.php">Create Learner Account</a><?php endif; ?><?php else: ?><a class="btn btn-premium w-100" href="learn.php?course=<?= (int)$course['id']; ?>">Continue Learning</a><?php endif; ?><a class="btn btn-outline-light w-100 mt-2" href="quiz.php?course=<?= (int)$course['id']; ?>">Course Quiz</a></div></div></div></div></section>
+<?php include __DIR__ . '/../includes/academy-footer.php'; ?>
