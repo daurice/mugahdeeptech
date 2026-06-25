@@ -1,0 +1,32 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mugah DeepTech Logo Mark</title>
+  <desc id="desc">Premium AI and data consulting monogram with neural circuit lines.</desc>
+  <defs>
+    <linearGradient id="mdtGradient" x1="32" y1="24" x2="164" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset="0.52" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="mdtStroke" x1="48" y1="53" x2="150" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#B8B8B8"/>
+    </linearGradient>
+    <filter id="glow" x="-30" y="-30" width="252" height="252" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.231 0 0 0 0 0.510 0 0 0 0 0.965 0 0 0 0.42 0"/>
+      <feBlend in2="BackgroundImageFix" result="glowBlur"/>
+      <feBlend in="SourceGraphic" in2="glowBlur" result="shape"/>
+    </filter>
+  </defs>
+  <rect x="18" y="18" width="156" height="156" rx="36" fill="#080808" stroke="url(#mdtGradient)" stroke-width="3"/>
+  <path d="M36 141C68 158 125 160 155 121C181 87 161 43 123 36" stroke="url(#mdtGradient)" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+  <path d="M46 135V58H63L96 104L129 58H146V135" stroke="url(#mdtStroke)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M146 58H112C134 60 151 76 151 96C151 116 134 132 112 135H146" stroke="url(#mdtGradient)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M63 58H78M96 104V128M129 58V38M46 92H27M146 96H166" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="78" cy="58" r="5" fill="#10B981"/>
+  <circle cx="96" cy="128" r="5" fill="#7C3AED"/>
+  <circle cx="129" cy="38" r="5" fill="#3B82F6"/>
+  <circle cx="27" cy="92" r="4" fill="#10B981"/>
+  <circle cx="166" cy="96" r="4" fill="#3B82F6"/>
+</svg>
