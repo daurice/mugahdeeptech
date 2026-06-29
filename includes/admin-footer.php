@@ -1,1 +1,1 @@
-</main></div></body></html>
+</main></div><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="../assets/js/academy-animations.js"></script></body></html>

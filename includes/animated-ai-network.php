@@ -1,0 +1,5 @@
+<?php
+function animated_ai_network(string $label = 'AI learning network'): string
+{
+    return '<div class="learning-animation ai-network-anim" data-aos="fade-up"><div class="anim-copy"><span>Animated concept</span><h3>'.e($label).'</h3><p>Neural nodes connect, exchange signals, and strengthen patterns as the system learns from examples.</p></div><svg viewBox="0 0 520 260" role="img" aria-label="Animated AI neural network"><g class="ai-links"><path d="M78 64L210 42L334 80L446 44M78 64L188 132L334 80M188 132L322 188L446 44M210 42L188 132M334 80L322 188M78 196L188 132L322 188L444 194"/></g><g class="ai-nodes"><circle cx="78" cy="64" r="11"/><circle cx="210" cy="42" r="9"/><circle cx="334" cy="80" r="12"/><circle cx="446" cy="44" r="10"/><circle cx="188" cy="132" r="14"/><circle cx="322" cy="188" r="12"/><circle cx="78" cy="196" r="9"/><circle cx="444" cy="194" r="11"/></g><circle class="ai-pulse-node" cx="188" cy="132" r="22"/></svg></div>';
+}

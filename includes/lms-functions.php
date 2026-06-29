@@ -19,3 +19,26 @@ function latest_quiz_attempt(PDO $pdo,int $learnerId,int $courseId): ?array { $s
 function eligible_for_certificate(PDO $pdo,int $learnerId,int $courseId): bool { $p=course_progress($pdo,$learnerId,$courseId); $a=latest_quiz_attempt($pdo,$learnerId,$courseId); return $p['total']>0 && $p['percent']>=100 && $a && (int)$a['passed']===1; }
 function issue_certificate(PDO $pdo,int $learnerId,int $courseId): ?array { if(!eligible_for_certificate($pdo,$learnerId,$courseId)) return null; $s=$pdo->prepare('SELECT * FROM lms_certificates WHERE learner_id=:l AND course_id=:c LIMIT 1'); $s->execute([':l'=>$learnerId,':c'=>$courseId]); if($r=$s->fetch()) return $r; $cert='MDTA-'.date('Y').'-'.strtoupper(substr(bin2hex(random_bytes(5)),0,10)); $code=strtoupper(substr(hash('sha256',$cert.$learnerId.$courseId),0,12)); $s=$pdo->prepare('INSERT INTO lms_certificates (learner_id,course_id,certificate_id,verification_code) VALUES (:l,:c,:cert,:code)'); $s->execute([':l'=>$learnerId,':c'=>$courseId,':cert'=>$cert,':code'=>$code]); $s=$pdo->prepare('SELECT * FROM lms_certificates WHERE certificate_id=:cert'); $s->execute([':cert'=>$cert]); return $s->fetch(); }
 function lms_admin_counts(PDO $pdo): array { return ['Total courses'=>(int)$pdo->query('SELECT COUNT(*) FROM lms_courses')->fetchColumn(),'Published courses'=>(int)$pdo->query("SELECT COUNT(*) FROM lms_courses WHERE status='Published'")->fetchColumn(),'Total learners'=>(int)$pdo->query('SELECT COUNT(*) FROM learners')->fetchColumn(),'Active learners'=>(int)$pdo->query('SELECT COUNT(DISTINCT learner_id) FROM lms_enrollments')->fetchColumn(),'Total enrollments'=>(int)$pdo->query('SELECT COUNT(*) FROM lms_enrollments')->fetchColumn(),'Completed courses'=>(int)$pdo->query("SELECT COUNT(*) FROM lms_enrollments WHERE status='completed'")->fetchColumn(),'Certificates issued'=>(int)$pdo->query('SELECT COUNT(*) FROM lms_certificates')->fetchColumn(),'Average quiz score'=>(int)$pdo->query('SELECT COALESCE(AVG(percentage),0) FROM lms_quiz_attempts')->fetchColumn()]; }
+function animated_lesson_visual(array $course, array $lesson): string
+{
+    require_once __DIR__ . '/animated-ai-network.php';
+    require_once __DIR__ . '/animated-dashboard.php';
+    require_once __DIR__ . '/animated-agent-team.php';
+    $text = strtolower(($course['title'] ?? '') . ' ' . ($lesson['title'] ?? '') . ' ' . ($lesson['content'] ?? ''));
+    if (str_contains($text, 'agent') || str_contains($text, 'automation')) {
+        return animated_agent_team();
+    }
+    if (str_contains($text, 'sql')) {
+        return '<div class="learning-animation sql-anim" data-aos="fade-up"><div class="anim-copy"><span>Animated concept</span><h3>SQL query returns insight</h3><p>A query moves through structured tables, filters records, and returns decision-ready results.</p></div><div class="sql-stage"><div class="query-chip">SELECT sales, region FROM data</div><div class="db-table"><i></i><i></i><i></i><i></i></div><div class="result-table"><b></b><b></b><b></b></div></div></div>';
+    }
+    if (str_contains($text, 'power bi') || str_contains($text, 'dashboard') || str_contains($text, 'analytics') || str_contains($text, 'data')) {
+        return animated_dashboard(str_contains($text, 'power bi') ? 'powerbi' : 'analytics');
+    }
+    if (str_contains($text, 'machine learning') || str_contains($text, 'classification') || str_contains($text, 'clustering') || str_contains($text, 'model')) {
+        return '<div class="learning-animation ml-anim" data-aos="fade-up"><div class="anim-copy"><span>Animated concept</span><h3>Model separates patterns</h3><p>Data points are compared, grouped, and classified so predictions become measurable.</p></div><div class="ml-plane"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span></span></div></div>';
+    }
+    if (str_contains($text, 'generative') || str_contains($text, 'prompt') || str_contains($text, 'language model')) {
+        return '<div class="learning-animation genai-anim" data-aos="fade-up"><div class="anim-copy"><span>Animated concept</span><h3>Prompt becomes output</h3><p>A clear instruction is transformed into useful text, ideas, drafts, and assistant responses.</p></div><div class="prompt-flow"><div class="prompt-box">Prompt: summarize sales</div><div class="generated-stack"><b></b><b></b><b></b><strong>Business ideas generated</strong></div></div></div>';
+    }
+    return animated_ai_network('AI network learning from examples');
+}

@@ -15,6 +15,7 @@ $meta = $meta ?? page_meta('Mugah DeepTech Academy', 'Learn AI, data analytics, 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="<?= site_url('assets/css/style.css'); ?>">
 </head>
 <body class="academy-body">

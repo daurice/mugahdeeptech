@@ -12,7 +12,12 @@
         <div class="footer-bottom"><span>&copy; <?= date('Y'); ?> Mugah DeepTech Academy</span><span>AI, Data & Automation Learning</span></div>
     </div>
 </footer>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= site_url('assets/js/main.js'); ?>"></script>
+<script src="<?= site_url('assets/js/academy-animations.js'); ?>"></script>
 </body>
 </html>

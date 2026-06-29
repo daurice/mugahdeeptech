@@ -175,3 +175,8 @@ php scripts/seed_lms.php
 ```
 
 The seed creates 10 courses, 30 modules, 90 lessons, 10 final quizzes, and 100 quiz questions.
+
+## Academy Animation Layer
+
+The Academy uses reusable animation components in includes/animated-*.php plus assets/js/academy-animations.js. It loads LottieFiles, AOS, GSAP, and Chart.js from CDN for animated lesson visuals, progress rings, quiz feedback, certificates, and LMS admin charts.
+
