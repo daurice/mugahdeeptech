@@ -1,0 +1,25 @@
+@media (max-width: 900px) {
+  .kids-menu { display: block; }
+  .kids-links { display: none; position: absolute; top: 76px; left: 20px; right: 20px; padding: 20px; border-radius: 18px; background: #fff; box-shadow: var(--shadow); flex-direction: column; align-items: stretch; }
+  .kids-links.open { display: flex; }
+  .hero-grid,.story-grid,.course-hero-grid,.two-col,.progress-layout { grid-template-columns: 1fr; }
+  .hero-art { width: min(540px,100%); margin: auto; }
+  .course-grid,.step-grid,.feature-row { grid-template-columns: repeat(2,1fr); }
+  .outcomes-card { position: static; }.lesson-top { grid-template-columns: 1fr auto; }.lesson-top>div { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }.lesson-title { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 620px) {
+  .kids-container,.animated-lesson { width: min(100% - 28px,1180px); }.kids-section { padding: 70px 0; }
+  .hero-grid { gap: 35px; }.hero-copy h1 { font-size: 3.7rem; }.hero-art-card { height: 390px; }
+  .avatar-face { width: 92px; height: 92px; font-size: 2.8rem; }.avatar-body { width: 110px; height: 120px; }.robot-screen { width: 103px; height: 85px; }.robot-body { width: 115px; height: 110px; }.speech { font-size: .72rem; }.floating-chip { display: none; }
+  .course-grid,.step-grid,.feature-row,.parent-grid,.flashcard-deck,.footer-grid { grid-template-columns: 1fr; }
+  .kids-course-card { min-height: 350px; }.section-heading { align-items: flex-start; flex-direction: column; }.story-grid { gap: 35px; }
+  .guardian-inner,.guardian-inner>div { align-items: flex-start; flex-direction: column; }.footer-bottom { flex-direction: column; gap: 8px; }
+  .course-hero { padding: 65px 0; }.course-hero h1,.lesson-title h1 { font-size: 3rem; }.teacher-story { grid-template-columns: 1fr; }.teacher-avatar { width: 150px; margin: 0 auto -5px; }.story-bubble { border-radius: 24px; }
+  .lesson-top .kids-brand span:last-child { display: none; }.activity-card { grid-template-columns: 55px 1fr; }.activity-card>b { grid-column: 2; }.lesson-finish { align-items: stretch; flex-direction: column; }.lesson-nav { grid-template-columns: 1fr; }
+  .match-game { grid-template-columns: 1fr; }.play-card,.quiz-form,.join-card { padding: 22px; }.progress-welcome { align-items: flex-start; flex-direction: column; }.progress-courses>a { grid-template-columns: 50px 1fr; }.progress-courses>a>b { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*:before,*:after { animation-duration: .01ms!important; animation-iteration-count: 1!important; scroll-behavior: auto!important; }
+  .reveal { opacity: 1; transform: none; }
+}

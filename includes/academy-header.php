@@ -27,6 +27,8 @@ $meta = $meta ?? page_meta('Mugah DeepTech Academy', 'Learn AI, data analytics, 
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('index.php'); ?>">Main Site</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= academy_url('courses.php'); ?>">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('kids/index.php'); ?>">Kids Academy</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('business/index.php'); ?>">Business Academy</a></li>
                 <?php if (learner_logged_in()): ?>
                     <li class="nav-item"><a class="nav-link" href="<?= academy_url('dashboard.php'); ?>">Dashboard</a></li>
                     <li class="nav-item"><a class="btn btn-outline-light btn-sm" href="<?= academy_url('logout.php'); ?>">Logout</a></li>
