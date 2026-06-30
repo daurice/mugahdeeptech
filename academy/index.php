@@ -1,3 +1,4 @@
+<?php require_once __DIR__.'/cms-home.php'; exit; ?>
 <?php
 require_once __DIR__ . '/../includes/academy-header.php';
 $courses = get_courses($pdo);

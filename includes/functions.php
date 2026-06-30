@@ -15,7 +15,7 @@ function site_url(string $path = ''): string
     $dir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/'));
     $dir = trim($dir, '/');
     $parts = $dir === '' ? [] : explode('/', $dir);
-    if ($parts && in_array(end($parts), ['admin', 'academy'], true)) {
+    if ($parts && in_array(end($parts), ['admin', 'academy', 'kids', 'business'], true)) {
         array_pop($parts);
     }
     $base = $parts ? '/' . implode('/', $parts) : '';
@@ -55,6 +55,10 @@ function require_admin(): void
 {
     if (empty($_SESSION['admin_id'])) {
         header('Location: login.php');
+        exit;
+    }
+    if (($_SESSION['admin_role'] ?? 'admin') === 'editor' && !str_starts_with(basename($_SERVER['SCRIPT_NAME'] ?? ''), 'academy-')) {
+        header('Location: academy-cms-dashboard.php');
         exit;
     }
 }

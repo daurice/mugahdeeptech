@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'&&verify_csrf($_POST['csrf_token']??null))
   $correct=0;$feedback=[];
   foreach($quiz['questions'] as $q){$answer=(string)($_POST['q'.$q['id']]??'');$ok=hash_equals((string)$q['correct_answer'],$answer);if($ok)$correct++;$feedback[$q['id']]=['ok'=>$ok,'explanation'=>$q['explanation']];}
   $total=count($quiz['questions']);$score=$total?(int)round($correct*100/$total):0;$result=['score'=>$score,'passed'=>$score>=(int)$quiz['pass_mark'],'feedback'=>$feedback];
-  if(learner_logged_in()&&$result['passed']){mark_kids_progress($pdo,learner_id(),(int)$lesson['course_id'],(int)$lesson['id'],null,$score);award_kids_badge($pdo,learner_id(),$quiz['badge_id']?(int)$quiz['badge_id']:null);}
+  if(learner_logged_in()){$pdo->prepare('INSERT INTO academy_quiz_attempts (pathway,learner_id,quiz_id,lesson_id,score,total_questions,passed,answers_json) VALUES ("Kids",?,?,?,?,?,?,?)')->execute([learner_id(),(int)$quiz['id'],(int)$lesson['id'],$score,$total,$result['passed']?1:0,json_encode($_POST)]);if($result['passed']){mark_kids_progress($pdo,learner_id(),(int)$lesson['course_id'],(int)$lesson['id'],null,$score);award_kids_badge($pdo,learner_id(),$quiz['badge_id']?(int)$quiz['badge_id']:null);}}
 }
 ?>
 <section class="quiz-page"><div class="activity-heading"><a class="back-link" href="<?=kids_url('lesson.php?id='.(int)$lesson['id'])?>">← Back to lesson</a><span class="kids-kicker">Quick brain boost</span><h1><?=e($quiz['title'])?></h1><p>Choose the best answer. You can always try again.</p></div>

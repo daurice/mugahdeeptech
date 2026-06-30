@@ -1,3 +1,4 @@
+<?php require_once __DIR__.'/cms-home.php'; exit; ?>
 <?php
 $meta = ['title' => 'AI Kids Academy | Mugah DeepTech', 'description' => 'Fun, animated lessons that help kids learn coding, AI, creativity, and problem-solving.'];
 require_once __DIR__ . '/../includes/kids-header.php';

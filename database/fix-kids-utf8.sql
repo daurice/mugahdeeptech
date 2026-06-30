@@ -1,0 +1,5 @@
+USE mugahdeeptech;
+UPDATE kids_lessons SET story_text=CONCAT('Meet Amani, a curious child who teaches a robot how to recognize fruits. Amani shows the robot many examples: round red apples, long yellow bananas, and bumpy orange oranges. Each example helps the robot notice a pattern. When it sees a new fruit, it makes its best prediction',CONVERT(0xE28094 USING utf8mb4),'and Amani checks whether it was right.') WHERE id=1;
+UPDATE kids_activities SET config_json=CONCAT('{"pairs":[{"item":"',CONVERT(0xF09F8D8E USING utf8mb4),' Apple","match":"Round + red"},{"item":"',CONVERT(0xF09F8D8C USING utf8mb4),' Banana","match":"Long + yellow"},{"item":"',CONVERT(0xF09F8D8A USING utf8mb4),' Orange","match":"Round + orange"}]}') WHERE id=1;
+UPDATE kids_activities SET config_json=CONCAT('{"cards":[{"front":"Example","back":"Something we show an AI so it can learn a pattern."},{"front":"Pattern","back":"A detail that repeats or connects examples."},{"front":"Prediction","back":"The AI',CONVERT(0xE28099 USING utf8mb4),'s best guess from what it learned."}]}') WHERE id=2;
+UPDATE kids_quizzes SET title=CONCAT('Amani',CONVERT(0xE28099 USING utf8mb4),'s AI Check-in') WHERE id=1;
